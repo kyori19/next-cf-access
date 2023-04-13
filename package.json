@@ -2,9 +2,32 @@
   "name": "next-cf-access",
   "version": "0.1.0",
   "description": "Protect your Next.js + Vercel project using Cloudflare Access",
-  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc -w",
+    "prepare": "yarn build"
+  },
+  "exports": {
+    ".": "./dist/index.js",
+    "./app/ncfa/authorize": "./dist/app/ncfa/authorize/route.js",
+    "./app/ncfa/redirect": "./dist/app/ncfa/redirect/route.js",
+    "./components": "./dist/components/index.js"
+  },
   "repository": "git@github.com:kyori19/next-cf-access.git",
   "author": "kyori19 <kyori@accelf.net>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.1",
+    "@types/node": "^18.15.11",
+    "@types/react": "^18.0.35",
+    "@types/react-dom": "^18.0.11",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.0",
+    "next": "^13.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
 }
