@@ -1,0 +1,10 @@
+{
+  "name": "next-cf-access",
+  "version": "0.1.0",
+  "description": "Protect your Next.js + Vercel project using Cloudflare Access",
+  "main": "index.js",
+  "repository": "git@github.com:kyori19/next-cf-access.git",
+  "author": "kyori19 <kyori@accelf.net>",
+  "license": "MIT",
+  "private": false
+}
