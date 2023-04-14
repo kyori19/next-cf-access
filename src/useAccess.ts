@@ -53,7 +53,6 @@ export async function verifyToken(token: string | null | undefined) {
       throw new Error('missing issuer');
     }
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
     const key = await fetchKey(iss, kid);
     if (!key) {
       throw new Error('missing key');
