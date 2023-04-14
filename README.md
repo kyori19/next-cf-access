@@ -89,9 +89,6 @@ If you got an error like `Error: Unsupported Server Component type: undefined`, 
 ```tsx
 'use client';
 
-// Next.js >= 13.3.0
-export * from 'next-cf-access/components';
-// or Next.js < 13.3.0
 export { Redirect } from 'next-cf-access/components';
 ```
 
