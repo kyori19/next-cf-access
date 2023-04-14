@@ -4,6 +4,9 @@ Protect your Next.js + Vercel project with Cloudflare Access including preview d
 
 ## Getting Started
 
+Demo project is available at [next-cf-access-demo](https://github.com/kyori19/next-cf-access-demo).
+This project is deployed at [next-cf-access-demo.wake.fail](https://next-cf-access-demo.wake.fail/) (though it cannot be accessed because of Cloudflare Access).
+
 ### Prerequisites
 
 * [Next.js](https://nextjs.org/) project you want to protect
@@ -19,6 +22,21 @@ Install [next-cf-access](https://www.npmjs.com/package/next-cf-access) package i
 
 ```sh
 yarn add next-cf-access
+```
+
+### Configure TypeScript Compiler Options
+
+If you are using TypeScript, you need to change `moduleResolution` to `nodenext` and add `app/.ncfa/**/*.ts` to `include` in `tsconfig.json`.
+
+```jsonc
+{
+  "compilerOptions": {
+    // ...
+    "moduleResolution": "nodenext"
+    // ...
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "app/.ncfa/**/*.ts"],
+}
 ```
 
 ### Configure the API route
@@ -64,6 +82,23 @@ export default async function RootLayout({
     </html>
   )
 }
+```
+
+If you got an error like `Error: Unsupported Server Component type: undefined`, you need to add this file to anywhere you want and change import from `next-cf-access/components` to it.
+
+```tsx
+'use client';
+
+// Next.js >= 13.3.0
+export * from 'next-cf-access/components';
+// or Next.js < 13.3.0
+export { Redirect } from 'next-cf-access/components';
+```
+
+If you created the file as `app/client.tsx`, change `app/layout.tsx` as follows:
+
+```tsx
+import { Redirect } from './client'; // instead of 'next-cf-access/components'
 ```
 
 ### Configure Cloudflare Access
